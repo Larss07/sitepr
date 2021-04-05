@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <center><h1>Apagar Questão</h1></center>
+
+        <h1>{{ questao.questao_texto }}</h1>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <form action="{% url 'votacao:gravarapagarquestao' %}" method="post">
+            {% csrf_token %}
+            {% for questao in latest_question_list %}
+            <input type="radio" name="questao"
+                id="questao{{ forloop.counter }}"
+                value="{{ questao.id }}" />
+                    <label for="questao{{ forloop.counter }}">
+                        {{ questao.questao_texto }}
+                    </label>
+                <br />
+            {% endfor %}
+    <br><input type="submit" value="Apagar e voltar à lista" /><br>
+</form>
+</body>
+</html>

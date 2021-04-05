@@ -1,0 +1,12 @@
+<h1>{{ questao.questao_texto }}</h1>
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<center><h1>Adicionar Nova Questão</h1></center>
+<form action="{% url 'votacao:gravarnovaquestao' %}" method="post">
+    {% csrf_token %}
+    <label for="questao">Questao:</label>
+    <input type="text" name="novaquestao" /> <br>
+    <br><input type="submit" value="Gravar Questão e Voltar à Lista" />
+
+</form>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <center><h1>Adicionar Nova Opção</h1></center>
+
+    <form action="{% url 'votacao:novaopcao' questao.id %}" method="post">
+        {% csrf_token %}
+        <p>Questao:{{ questao.questao_texto }}</p>
+        <label for="questao">Nova Opção:</label>
+        <input type="text" name="novaopcao" /> <br>
+        <br><input type="submit" value="Gravar Opção e Voltar à Lista" />
+    </form>
+</body>
+</html>
